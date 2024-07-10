@@ -1,0 +1,7 @@
+.game-area,
+.color-selection-area {
+    flex: 1;
+    border-color: red;
+    border-style: solid;
+    border-width: 1px;
+}
