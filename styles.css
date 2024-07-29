@@ -1,7 +1,80 @@
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto';
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    height: 100%;
+    min-height: 90vh;
+}
+
 .game-area,
-.color-selection-area {
-    flex: 1;
+.color-selection-area,
+.board-size-selector {
     border-color: red;
     border-style: solid;
     border-width: 1px;
+    margin: 10px;
+}
+
+.game-setup {
+    display: flex;
+    height: 100px;
+    width: 1000px;
+    padding: 0px;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-area {
+    display: flex;
+    height: 800px;
+    width: 800px;
+    flex-grow: 0;
+    flex-wrap: wrap;
+    gap: 0px;
+    padding: 0px;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+.color-selection-area {
+    flex: none;
+    width: 70%;
+    height: 100px;
+    margin: 0px;
+}
+
+.board-size-selector {
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    height: 100px;
+    margin: 0px;
+    justify-content: center;
+    align-items: center;
+}
+
+.pixel {
+    border-color: rgba(0, 0, 0, 0.3);
+    border-style: dotted;
+    border-width: 1px;
+    width: 15px;
+    height: 15px;
+    margin: 0px;
+
+}
+
+#board-size {
+    text-align: center;
+    padding: 0.5em;
+    border: 1px solid black;
+    border-radius: 4px;
+    height: 2em;
+    line-height: 2em;
+    width: 50px;
 }
