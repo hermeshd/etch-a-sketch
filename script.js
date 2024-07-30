@@ -2,11 +2,15 @@
 const gameArea = document.querySelector(".game-area");
 const colorSelectionArea = document.querySelector(".color-selection-area");
 const boardSizeNumber = document.querySelector('#board-size');
+const gameSetup = document.querySelector('.game-setup');
 
+//Set initial grid size and color
 let gridSize = boardSizeNumber.value;
+let pixelColor = 'black';
 
 //Update pixel size based on grid size
 function updatePixelSize() {
+
     const gameArea = document.querySelector('.game-area');
     let pixels = document.querySelectorAll('.pixel');
 
@@ -23,9 +27,6 @@ function updatePixelSize() {
         pixel.style.height = (newPixelWidth - 2) + 'px';
         gameArea.appendChild(pixel);
     }
-    console.log(`Game Area: ${gameAreaWidth}px`);
-    console.log(`Pixel Size: ${newPixelWidth}px`);
-    console.log(`Grid Size: ${gridSize}`);
 }
 
 //Update grid size on change
@@ -34,14 +35,62 @@ boardSizeNumber.addEventListener('change', () => {
     updatePixelSize();
 });
 
+//Change color when hovering over pixel
+const paintMode = document.querySelector('#toggle-painting');
+//Normal colors
+const changeColorHandler = (event) => {
+    if (event.target.classList.contains('pixel')) {
+        event.target.style.backgroundColor = pixelColor;
+    }
+};
 
+//Random color
+const randomColorHandler = (event) => {
+    if (event.target.classList.contains('pixel')) {
+        const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+        event.target.style.backgroundColor = "#" + randomColor;
+        console.log(randomColor);
+    }
+};
+
+//Toggle paint mode
+paintMode.addEventListener('change', () => {
+    if (paintMode.checked) {
+        if (pixelColor === 'random') {
+            gameArea.addEventListener('mouseover', randomColorHandler);
+        } else {
+            gameArea.addEventListener('mouseover', changeColorHandler);
+        }
+    } else {
+        gameArea.removeEventListener('mouseover', changeColorHandler);
+    }
+});
+
+//Clear game area
+const clearButton = document.querySelector('#clear-button');
+clearButton.addEventListener('click', () => {
+    const pixels = document.querySelectorAll('.pixel');
+    pixels.forEach(pixel => {
+        pixel.style.backgroundColor = 'white';
+    });
+});
+
+//Change pixel color on click
+gameSetup.addEventListener('click', (event) => {
+    if (event.target.classList.contains('color')) {
+        pixelColor = event.target.style.backgroundColor;
+    } else if (event.target.classList.contains('random')) {
+        pixelColor = 'random';
+    } else if (event.target.classList.contains('darken')) {
+        pixelColor = 'darken';
+    }
+    console.log(pixelColor);
+});
 
 // Call the function initially and also on window resize
 window.addEventListener('load', updatePixelSize);
-window.addEventListener('resize', updatePixelSize);
+
+// window.addEventListener('resize', updatePixelSize);
 
 
-//TODO: Add color selection
-//TODO: Add random color option
-//TODO: Add clear button
-//TODO: Add darkening effect
+//TODO: Fix random color and maybe add darken color

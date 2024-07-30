@@ -13,10 +13,38 @@
 
     <div class="game-area"></div>
     <div class="game-setup">
-        <div class="color-selection-area"></div>
-        <div class="board-size-selector">
-            <p id="board-size-text">Grid Size</p>
-            <input type="number" id="board-size" min="16" value="16" max="100">
+        <div class="color-selection-area">
+            <div class="color black" style="background-color: black;"></div>
+            <div class="color red" style="background-color: red;"></div>
+            <div class="color green" style="background-color: green;"></div>
+            <div class="color blue" style="background-color: blue"></div>
+            <div class="color yellow" style="background-color: yellow"></div>
+            <div class="color purple" style="background-color: purple"></div>
+            <div class="color orange" style="background-color: orange"></div>
+            <div class="color pink" style="background-color: pink"></div>
+            <div class="color brown" style="background-color: brown"></div>
+            <div class="color white" style="background-color: white"></div>
+            <div class="color gray" style="background-color: gray"></div>
+            <div class="random"></div>
+        </div>
+
+        <div class="settings">
+
+            <div class="board-size-selector">
+                <p class="board-size text">Grid Size</p>
+                <input type="number" id="board-size" min="16" value="16" max="100">
+            </div>
+
+            <div class="toggle-painting-area">
+                <p class="toggle-painting text">Toggle Paint Mode</p>
+                <label class="switch">
+                    <input type="checkbox" id="toggle-painting">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+
+            <button id="clear-button">Clear</button>
+
         </div>
     </div>
 
